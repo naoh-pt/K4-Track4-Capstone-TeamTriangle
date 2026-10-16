@@ -1,0 +1,9 @@
+data/*/
+!data/logs/
+data/logs/*.csv
+*.pt
+*.mp4
+results/errors_*/
+__pycache__/
+data/*.zip
+results/sweep/errors_*/

@@ -1,0 +1,69 @@
+{
+  "info": {
+    "dataset": "data/seatanalysis",
+    "tag": "seatanalysis_yolo11n_640_c10",
+    "model": "yolo11n.pt",
+    "conf": 0.1,
+    "imgsz": 640,
+    "n_images": 114,
+    "n_seats": 791,
+    "n_calib": 383,
+    "n_test": 408,
+    "occ_share": 0.3729456384323641,
+    "infer_ms_mean": 80.5969473685285,
+    "final_version": "+ Luật điểm chân (gần đúng hình học sàn)",
+    "final_ov_thr": 0.25,
+    "final_fd_thr": 0.5,
+    "class_names": [
+      "empty-chair",
+      "occupied-chair-back",
+      "occupied-chair-front",
+      "occupied-chair-side",
+      "standing-person"
+    ]
+  },
+  "summary": [
+    {
+      "version": "Chỉ YOLO + overlap, ngưỡng mặc định 0.30",
+      "rule": "overlap",
+      "ov_thr": 0.3,
+      "fd_thr": null,
+      "calib_bal_acc": 0.6503418853369178,
+      "n": 408,
+      "acc": 0.7377450980392157,
+      "bal_acc": 0.6647058823529413,
+      "tp": 57,
+      "tn": 244,
+      "fp": 11,
+      "fn": 96
+    },
+    {
+      "version": "Chỉ YOLO + overlap, ngưỡng đã chỉnh",
+      "rule": "overlap",
+      "ov_thr": 0.2,
+      "fd_thr": null,
+      "calib_bal_acc": 0.6869995909064345,
+      "n": 408,
+      "acc": 0.7377450980392157,
+      "bal_acc": 0.6712418300653595,
+      "tp": 62,
+      "tn": 239,
+      "fp": 16,
+      "fn": 91
+    },
+    {
+      "version": "+ Luật điểm chân (gần đúng hình học sàn)",
+      "rule": "foot",
+      "ov_thr": 0.25,
+      "fd_thr": 0.5,
+      "calib_bal_acc": 0.6874379054409444,
+      "n": 408,
+      "acc": 0.7573529411764706,
+      "bal_acc": 0.6816993464052288,
+      "tp": 58,
+      "tn": 251,
+      "fp": 4,
+      "fn": 95
+    }
+  ]
+}

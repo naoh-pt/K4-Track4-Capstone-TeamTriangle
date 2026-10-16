@@ -1,0 +1,66 @@
+{
+  "info": {
+    "dataset": "data/beyond",
+    "tag": "beyond_yolo11s_960_c10",
+    "model": "yolo11s.pt",
+    "conf": 0.1,
+    "imgsz": 960,
+    "n_images": 233,
+    "n_seats": 3151,
+    "n_calib": 1418,
+    "n_test": 1733,
+    "occ_share": 0.12091399555696604,
+    "infer_ms_mean": 376.36714034337575,
+    "final_version": "+ Luật điểm chân (gần đúng hình học sàn)",
+    "final_ov_thr": 0.05,
+    "final_fd_thr": 2.75,
+    "class_names": [
+      "Empty Seat",
+      "Occupied Seat"
+    ]
+  },
+  "summary": [
+    {
+      "version": "Chỉ YOLO + overlap, ngưỡng mặc định 0.30",
+      "rule": "overlap",
+      "ov_thr": 0.3,
+      "fd_thr": null,
+      "calib_bal_acc": 0.6850199708835716,
+      "n": 1733,
+      "acc": 0.8817080207732256,
+      "bal_acc": 0.6870957816875761,
+      "tp": 90,
+      "tn": 1438,
+      "fp": 86,
+      "fn": 119
+    },
+    {
+      "version": "Chỉ YOLO + overlap, ngưỡng đã chỉnh",
+      "rule": "overlap",
+      "ov_thr": 0.05,
+      "fd_thr": null,
+      "calib_bal_acc": 0.6890141475978947,
+      "n": 1733,
+      "acc": 0.8493941142527409,
+      "bal_acc": 0.6873014228484597,
+      "tp": 99,
+      "tn": 1373,
+      "fp": 151,
+      "fn": 110
+    },
+    {
+      "version": "+ Luật điểm chân (gần đúng hình học sàn)",
+      "rule": "foot",
+      "ov_thr": 0.05,
+      "fd_thr": 2.75,
+      "calib_bal_acc": 0.6991535704953525,
+      "n": 1733,
+      "acc": 0.8747836122331217,
+      "bal_acc": 0.6976085973703048,
+      "tp": 97,
+      "tn": 1419,
+      "fp": 105,
+      "fn": 112
+    }
+  ]
+}
