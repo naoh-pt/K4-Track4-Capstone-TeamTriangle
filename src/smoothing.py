@@ -34,3 +34,38 @@ class SeatState:
             self.occupied = detected
             self._pending = self._since = None
         return self.occupied
+
+
+class FrameSeatState:
+    """
+    Bản làm mượt theo số khung hình của vai A (nhánh phat), dùng bởi src/app.py.
+    Chỉ đổi trạng thái khi phát hiện liên tục đủ số khung hình quy định.
+    Không chạy nối tiếp với SeatState ở trên: chọn một trong hai.
+    """
+    def __init__(self, seat_id, on_frames=10, off_frames=25):
+        """
+        :param seat_id: Định danh ghế
+        :param on_frames: Số frame liên tiếp nhận diện 'có người' để chuyển sang Occupied (đỏ)
+        :param off_frames: Số frame liên tiếp nhận diện 'trống' để chuyển sang Empty (xanh)
+        """
+        self.seat_id = seat_id
+        self.occupied = False
+        self.count = 0
+        self.on_frames = on_frames
+        self.off_frames = off_frames
+
+    def update(self, detected):
+        """
+        Cập nhật trạng thái thô tại khung hình hiện tại.
+        :param detected: True nếu khung hiện tại có người gán vào ghế, False nếu không
+        :return: Trạng thái đã làm mượt (True: có người, False: trống)
+        """
+        if detected != self.occupied:
+            self.count += 1
+            need = self.on_frames if detected else self.off_frames
+            if self.count >= need:
+                self.occupied = detected
+                self.count = 0
+        else:
+            self.count = 0
+        return self.occupied
