@@ -48,3 +48,7 @@ data/beyond/test/images/*.jpg
 !data/.gitkeep
 !data/beyond/.gitkeep
 !data/logs/.gitkeep
+
+# Secrets
+.env
+kaggle/output/

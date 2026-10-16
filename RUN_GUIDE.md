@@ -83,6 +83,25 @@ Kết quả in ra terminal bao gồm:
 
 ---
 
+### ☁️ Chạy trên GPU Kaggle (video test + video demo sản phẩm)
+
+Dùng mô hình vai C đã chọn (YOLO11s, imgsz 960, conf 0.10) trên GPU T4 của Kaggle, gán ghế và làm mượt bằng `OccupancyEngine` của vai B. Cần file `.env` ở gốc repo (đã nằm trong `.gitignore`, **không commit**) với `KAGGLE_API_TOKEN`, `NGROK_AUTHTOKEN`, `NGROK_DOMAIN`.
+
+```bash
+pip install kaggle
+python kaggle/push_kaggle.py            # chạy kernel GPU trong 2 giờ (--hours để đổi)
+python kaggle/push_kaggle.py status     # trạng thái kernel
+python kaggle/push_kaggle.py output     # tải kết quả về kaggle/output/
+```
+
+- Token ngrok được đưa lên dataset **riêng tư** `<user>/libseat-secrets`, không nằm trong code kernel.
+- Khi khởi động, kernel tự tạo video test (các video trong `video_test/`, `demo_backup.mp4` và 2 clip Pexels) và video demo sản phẩm `libseat_demo.mp4`.
+- Mở `https://<NGROK_DOMAIN>`: bật webcam khi ghế còn trống (ghế tự được thêm, hoặc bấm **Thêm ngay ghế đang thấy**), **Quay video test** theo kịch bản (ghế trống → ngồi → đứng sát ghế / đi ngang → che ghế), rồi **Dựng lại video demo** để đưa bản quay của nhóm lên đầu video demo. Chi tiết: [kaggle/README.md](kaggle/README.md).
+- Log `*_log.csv` theo định dạng của `libseat/src/eval_log.py`; `*_full_log.csv` giữ cả trạng thái `unknown` và cấu hình ngưỡng.
+- Bấm **Tắt server** khi xong để tiết kiệm quota GPU; mọi file nằm trong Output của kernel.
+
+---
+
 ## 📂 3. Cấu trúc thư mục dự án
 
 ```
